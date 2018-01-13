@@ -1,5 +1,6 @@
 Code Book
 This code book describes variables, data, and any transformations or work performed to clean up the data. These efforts resulted into a clean and tidy dataset - please see data.txt and data.csv.
+
 Data Source Details
 •	Original data: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 •	Information provided by the authors: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
@@ -7,11 +8,13 @@ Dataset Description
 Full details and explanations can be found in 'README.txt' in the ZIP file containing the original data source.
 Data Partitioning
 The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.
+
 Measurements
 The following sensor signals were captured using the smartphone's embedded accelerometer and gyroscope:
 •	three-axial linear acceleration
 •	three-axial angular velocity at a constant rate of 50Hz
 The captured signals were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). From each window, a vector of features was obtained by calculating variables from the time and frequency domain. See the section 'Feature Selection' below, also the file 'features_info.txt' has complete details.
+
 Feature Selection
 The features selected for this database come from the accelerometer and gyroscope three-axial raw signals tAcc-XYZ and tGyro-XYZ.
 •	The time domain signals were captured at a constant rate of 50 Hz, prefix 't' denotes time
@@ -19,15 +22,18 @@ The features selected for this database come from the accelerometer and gyroscop
 •	The accelaration signal was separated into body and gravity acceleration signals:
 o	tBodyAcc-XYZ
 o	tGravityAcc-XYZ
+
 •	Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals:
 o	tBodyAccJerk-XYZ
 o	tBodyGyroJerk-XYZ
+
 •	Next, the magnitude of these three-dimensional signals were calculated using the Euclidean form:
 o	tBodyAccMag
 o	tGravityAccMag
 o	tBodyAccJerkMag
 o	tBodyGyroMag
 o	tBodyGyroJerkMag
+
 •	Finally, a Fast Fourier Transform (FFT) was applied to some of these signals, prefix 'f' indicates frequency domain signals:
 o	fBodyAcc-XYZ
 o	fBodyAccJerk-XYZ
@@ -35,6 +41,7 @@ o	fBodyGyro-XYZ
 o	fBodyAccJerkMag
 o	fBodyGyroMag
 o	fBodyGyroJerkMag
+
 That leaves us with the following set of signals, suffix '-XYZ' denotes three-axial signals in the X, Y and Z directions:
 1.	tBodyAcc-XYZ
 2.	tGravityAcc-XYZ
@@ -53,7 +60,9 @@ That leaves us with the following set of signals, suffix '-XYZ' denotes three-ax
 15.	fBodyAccJerkMag
 16.	fBodyGyroMag
 17.	fBodyGyroJerkMag
+
 The features were further combined with a variety of estimated variables, such as mean value, standard deviation, largest and smallest value in the set etc. This adds up to over 550 of different indicators in total. The file 'features.txt' lists all of the variables.
+
 Transformations
 As stipulated by the requirements the following transformations were made to keep the resulting output clean and tidy:
 •	The training and the test sets have been merged to form a single data set
@@ -65,6 +74,7 @@ Feature name adjustment example:
 •	'tBodyAcc-mean()-X' has been changed to 'tBodyAcc_mean_X'
 •	'tBodyAcc-std()-Z' has been changed to 'tBodyAcc_std_Z'
 •	etc.
+
 The transformations are achieved by the script called run_analysis.R, which:
 1.	Ensures that all non-standard R packages (dplyr, reshape2) are installed
 2.	Defines a number of helper functions to promote code reuse
